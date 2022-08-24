@@ -15,7 +15,7 @@
                     <div class="form-group">
                         Title
                         <div class="col-sm-6">
-                            <input type="text" name="post_title" class="form-control">
+                            <input type="text" name="post_title" class="form-control" placeholder="Enter title">
                         </div>
                     </div>
                     <!-- 投稿の本文 -->
@@ -52,7 +52,7 @@
                     @foreach ($posts as $post)
                     <div class="post-show">
                         <h4 class="card-text">{{ $post->user->name }}の投稿</h4>
-                        <h5 class="card-title">{{ $post->post_title }}</h5>
+                        <h5 class="card-title">タイトル：{{ $post->post_title }}</h5>
                         <p class="card-text">{{ $post->post_content }}</p>
                         <form action="">
                             <button type="submit" class="btn btn-primary">
