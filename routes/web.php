@@ -20,6 +20,10 @@ Route::get('/', 'PostsController@index');
 // 投稿処理
 Route::post('posts', 'PostsController@store');
 
+// いいねボタン
+// Route::get('/reply/nice/{post}', 'NiceController@nice')->name('nice');
+// Route::get('/reply/unnice/{post}', 'NiceController@unnice')->name('unnice');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

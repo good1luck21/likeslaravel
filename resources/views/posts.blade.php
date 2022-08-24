@@ -54,11 +54,31 @@
                         <h4 class="card-text">{{ $post->user->name }}の投稿</h4>
                         <h5 class="card-title">タイトル：{{ $post->post_title }}</h5>
                         <p class="card-text">{{ $post->post_content }}</p>
-                        <form action="">
-                            <button type="submit" class="btn btn-primary">
-                                Like
-                            </button>
-                        </form>
+                        <button type="submit" class="btn btn-primary">
+                            Like
+                        </button>
+                        {{-- <span>
+                            <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
+                            @if($nice)
+                            <!-- 「いいね」取消用ボタンを表示 -->
+                                <a href="{{ route('unnice', $post) }}" class="btn btn-success btn-sm">
+                                    いいね
+                                    <!-- 「いいね」の数を表示 -->
+                                    <span class="badge">
+                                        {{ $post->nices->count() }}
+                                    </span>
+                                </a>
+                            @else
+                            <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
+                                <a href="{{ route('nice', $post) }}" class="btn btn-secondary btn-sm">
+                                    いいね
+                                    <!-- 「いいね」の数を表示 -->
+                                    <span class="badge">
+                                        {{ $post->nices->count() }}
+                                    </span>
+                                </a>
+                            @endif
+                        </span> --}}
                     </div>
                     <br>
                     {{-- <tr>
