@@ -50,14 +50,17 @@
             <!-- テーブル本体 -->
                 <tbody>
                     @foreach ($posts as $post)
-                    <h4 class="card-text">{{ $post->user->name }}の投稿</h4>
-                    <h5 class="card-title">{{ $post->post_title }}</h5>
-                    <p class="card-text">{{ $post->post_content }}</p>
-                    <form action="">
-                        <button type="submit" class="btn btn-primary">
-                            Like
-                        </button>
-                    </form>
+                    <div class="post-show">
+                        <h4 class="card-text">{{ $post->user->name }}の投稿</h4>
+                        <h5 class="card-title">{{ $post->post_title }}</h5>
+                        <p class="card-text">{{ $post->post_content }}</p>
+                        <form action="">
+                            <button type="submit" class="btn btn-primary">
+                                Like
+                            </button>
+                        </form>
+                    </div>
+                    <br>
                     {{-- <tr>
                         <!-- 投稿タイトル -->
                         <td class="table-text">

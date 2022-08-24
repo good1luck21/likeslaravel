@@ -1,11 +1,12 @@
 @charset "utf-8";
 
 .container {
-    max-width: 1140px;
+    /* max-width: 1140px; */
 }
 
-
-
-.card-box {
+.post-show {
     background-color: #fff;
+    padding: 1.25rem;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
 }
