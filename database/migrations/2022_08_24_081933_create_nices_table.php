@@ -14,7 +14,7 @@ class CreateNicesTable extends Migration
     public function up()
     {
         Schema::create('nices', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('post_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();

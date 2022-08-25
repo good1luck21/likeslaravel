@@ -41,63 +41,28 @@
     @if (count($posts) > 0)
     <div class="card-body">
         <div class="card-box">
-            <table class="table table-striped task-table">
-            <!-- テーブルヘッダ -->
-                {{-- <thead>
-                    <th>投稿一覧</th>
-                    <th> </th>
-                </thead> --}}
-            <!-- テーブル本体 -->
-                <tbody>
-                    @foreach ($posts as $post)
-                    <div class="post-show">
-                        <h4 class="card-text">{{ $post->user->name }}の投稿</h4>
-                        <h5 class="card-title">タイトル：{{ $post->post_title }}</h5>
-                        <p class="card-text">{{ $post->post_content }}</p>
-                        <button type="submit" class="btn btn-primary">
-                            Like
-                        </button>
-                        {{-- <span>
-                            <!-- もし$niceがあれば＝ユーザーが「いいね」をしていたら -->
-                            @if($nice)
-                            <!-- 「いいね」取消用ボタンを表示 -->
-                                <a href="{{ route('unnice', $post) }}" class="btn btn-success btn-sm">
-                                    いいね
-                                    <!-- 「いいね」の数を表示 -->
-                                    <span class="badge">
-                                        {{ $post->nices->count() }}
-                                    </span>
-                                </a>
-                            @else
-                            <!-- まだユーザーが「いいね」をしていなければ、「いいね」ボタンを表示 -->
-                                <a href="{{ route('nice', $post) }}" class="btn btn-secondary btn-sm">
-                                    いいね
-                                    <!-- 「いいね」の数を表示 -->
-                                    <span class="badge">
-                                        {{ $post->nices->count() }}
-                                    </span>
-                                </a>
-                            @endif
-                        </span> --}}
-                    </div>
-                    <br>
-                    {{-- <tr>
-                        <!-- 投稿タイトル -->
-                        <td class="table-text">
-                        <div>{{ $post->post_title }}</div>
-                        </td>
-                        <!-- 投稿詳細 -->
-                        <td class="table-text">
-                        <div>{{ $post->post_content }}</div>
-                        </td>
-                        <!-- 投稿者名の表示 -->
-                        <td class="table-text">
-                        <div>{{ $post->user->name }}</div>
-                        </td>
-                    </tr> --}}
-                    @endforeach
-                </tbody>
-            </table>
+            
+            @foreach ($posts as $post)
+            <div class="post-show">
+                <h4 class="card-text">{{ $post->user->name }}の投稿</h4>
+                <h5 class="card-title">タイトル：{{ $post->post_title }}</h5>
+                <p class="card-text">{{ $post->post_content }}</p>
+                <p> いいね数： {{ count($post->nices) }} </p>
+                @if($post->nices()->where('user_id', Auth::user()->id)->exists())
+                <form action="/posts/{{$post->id}}/unnice" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-primary">いいねを取り消す</button>
+                </form>
+                @else
+                <form action="/posts/{{$post->id}}/nice" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">いいね</button>
+                </form>
+                @endif
+                
+            </div>
+            @endforeach
         </div>
     </div>
     @endif

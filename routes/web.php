@@ -24,6 +24,9 @@ Route::post('posts', 'PostsController@store');
 // Route::get('/reply/nice/{post}', 'NiceController@nice')->name('nice');
 // Route::get('/reply/unnice/{post}', 'NiceController@unnice')->name('unnice');
 
+Route::post("posts/{post}/nice", "NicesController@nice")->name("nice");
+Route::delete("posts/{post}/unnice", "NicesController@unnice")->name("unnice");
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
